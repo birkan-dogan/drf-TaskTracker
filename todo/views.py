@@ -57,3 +57,18 @@ def todo_detail(request, id):
 
 
 
+# class-based views (concrete views)
+
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+class Todos(ListCreateAPIView):
+
+    queryset = Todo.objects.filter(is_done = False)
+    serializer_class = TodoSerializer
+
+class TodoDetail(RetrieveUpdateDestroyAPIView):
+
+    queryset = Todo.objects.filter(is_done = False)
+    serializer_class = TodoSerializer
+    lookup_field = "id"
+
