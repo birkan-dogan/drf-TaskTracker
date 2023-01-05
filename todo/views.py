@@ -72,3 +72,14 @@ class TodoDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = TodoSerializer
     lookup_field = "id"
 
+
+# class-based views (ViewSets)
+
+from rest_framework.viewsets import ModelViewSet
+
+
+class TodoMVS(ModelViewSet):
+
+    queryset = Todo.objects.filter(is_done = False)
+    serializer_class = TodoSerializer
+    lookup_field = "id"
